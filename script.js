@@ -25,9 +25,29 @@ function promptMe () {
   var q3 = confirm("Do you want your password to include uppercase letters? Click 'okay' if you want uppercase letters.");
   var q4 = confirm("Do you want your password to include numbers? Click 'okay' if you want numbers.");
   var q5 = confirm("Do you want your password to include special characters? Click 'okay' if you want special characters.");
+  var Chars = createCharList(q2, q3, q4, q5)
   }
 
-
+  function createCharList (lower, upper, numbers, special) {
+    var charList = ""
+    if (lower){
+      charList += charSet[0];
+    }
+    if (upper){
+      charList += charSet[1];
+    }
+    if (numbers){
+      charList += charSet[2];
+    }
+    if (special){
+      charList += charSet[3];
+    }
+    if (charList.length === 0) {
+      alert("No characters were chosen")
+    }
+    return charList;
+  }
+  
 
 var generateBtn = document.querySelector("#generate");
 
