@@ -13,16 +13,21 @@
 // THEN a password is generated that matches the selected criteria
 // WHEN the password is generated
 // THEN the password is either displayed in an alert or written to the page
+var charSet = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "1234567890", "!@#$%^&*()><[]{}"]
 
 function promptMe () {
   var q1 = prompt("Please enter your desired password length (Must be between 8-128).", "answer here");
-  // if (q1 >= 8 && q1 <=128 ) {
-  //  q2()
-  // } else {
-  //   alert("Please choose a number between 8 and 128")
-  //   promptMe();
+  if (q1 < 8 && q1 > 128 ) {
+   alert("Please choose a number between 8 and 128");
+   promptMe();
   }
-}
+  var q2 = confirm("Do you want your password to include lowercase letters? Click 'okay' if you want lowercase letters.");
+  var q3 = confirm("Do you want your password to include uppercase letters? Click 'okay' if you want uppercase letters.");
+  var q4 = confirm("Do you want your password to include numbers? Click 'okay' if you want numbers.");
+  var q5 = confirm("Do you want your password to include special characters? Click 'okay' if you want special characters.");
+  }
+
+
 
 var generateBtn = document.querySelector("#generate");
 
