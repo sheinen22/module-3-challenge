@@ -18,7 +18,7 @@ var charSet = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "1234
 function promptMe () {
   var q1 = prompt("Please enter your desired password length (Must be between 8-128).", "answer here");
   // console.log(q1)
-  if (q1 < 8 || q1 > 128) {
+  if (q1 < 8 || q1 > 128){
     alert("Please enter a number between 8 and 128");
     promptMe();
   } else {
@@ -27,7 +27,8 @@ function promptMe () {
       var q4 = confirm("Do you want your password to include numbers? Click 'okay' if you want numbers.");
       var q5 = confirm("Do you want your password to include special characters? Click 'okay' if you want special characters.");
       var Chars = createCharList(q2, q3, q4, q5)
-      generatePassword(q1, Chars)
+      var password = generatePassword(q1, Chars)
+      // writePassword(password)
     }
 }
 
@@ -56,26 +57,21 @@ function generatePassword (passLength, charList) {
     var randomNumber = Math.floor(Math.random() * charList.length)
     var char = charList[randomNumber]
     password += char
-    //get the length of the charlist
-    //generate a random character for every place in the length ie if length = 8, pull 8 random characters from charlist
-    //select from charlist the index position of the random number we created
-    //add selected character to password variable
   }
-  // return password
   console.log(password)
 }
 
 
 // var generateBtn = document.querySelector("#generate");
 
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
+// Write password to the #password input
+// function writePassword(passwordText) {
+//   // var password = generatePassword();
 //   var passwordText = document.querySelector("#password");
 
-//   passwordText.value = password;
+  // passwordText.value = password;
 
 // }
 
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button
+// generateBtn.addEventListener("click", writePassword)
