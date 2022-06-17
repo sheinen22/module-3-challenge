@@ -18,7 +18,7 @@ var charSet = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "1234
 function promptMe () {
   var q1 = prompt("Please enter your desired password length (Must be between 8-128).", "answer here");
   // console.log(q1)
-  if (q1 < 8 || q1 > 128){
+  if (q1 < 8 || q1 > 128 || isNaN(q1)){
     alert("Please enter a number between 8 and 128");
     promptMe();
   } else {
@@ -27,13 +27,12 @@ function promptMe () {
       var q4 = confirm("Do you want your password to include numbers? Click 'okay' if you want numbers.");
       var q5 = confirm("Do you want your password to include special characters? Click 'okay' if you want special characters.");
       var Chars = createCharList(q2, q3, q4, q5)
-      var password = generatePassword(q1, Chars)
-      // writePassword(password)
+      generatePassword(q1, Chars)
     }
-}
-
-function createCharList (lower, upper, numbers, special) {
-  var charList = ""
+  }
+  
+  function createCharList (lower, upper, numbers, special) {
+    var charList = ""
   if (lower){
     charList += charSet[0];
   }
@@ -59,19 +58,6 @@ function generatePassword (passLength, charList) {
     password += char
   }
   console.log(password)
+  var passwordText = document.querySelector("#password")
+  passwordText.value = password
 }
-
-
-// var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-// function writePassword(passwordText) {
-//   // var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-  // passwordText.value = password;
-
-// }
-
-// Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword)
